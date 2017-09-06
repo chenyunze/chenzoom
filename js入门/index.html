@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+	</head>
+	<body>
+	<!--第一层样式-->
+	<div id="first">
+			<p>请为下面DIV添加样式</p>
+			<div id="botton">
+				<span>点击设置</span>
+			</div>
+			<div id="box"></div>
+	</div>
+	
+	<!--第二层样式-->
+		<div id="second">
+			<div id="ctrlbg">
+				<!--控制盒子-->
+				<div id="ctrlbox">
+					<!--控制颜色的按钮组-->
+					<div class="choice">
+						<a>请选择背景颜色:</a>
+						<div id="color1">
+							<span>红</span>
+						</div>
+						<div id="color2">
+							<span>黄</span>
+						</div>
+						<div id="color3">
+							<span>蓝</span>
+						</div>
+					</div>
+					<!--控制宽度的按钮组-->
+					<div class="choice">
+						<a>请选择宽(px):</a>
+						<div id="width1">
+							<span>200</span>
+						</div>
+						<div id="width2">
+							<span>300</span>
+						</div>
+						<div id="width3">
+							<span>400</span>
+						</div>
+					</div>
+					<!--控制高度的按钮组-->
+					<div class="choice">
+						<a>请选择高(px):</a>
+						<div id="height1">
+							<span>200</span>
+						</div>
+						<div id="height2">
+							<span>300</span>
+						</div>
+						<div id="height3">
+							<span>400</span>
+						</div>
+					</div>
+					<!--控制盒子底部按钮组-->
+					<div class="bottom">
+						<div id="botton2">
+							<span>恢复</span>
+						</div>
+						<div id="botton3">
+							<span>确定</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</body>
+	<script>
+			//			点击样式层 点击设置 按钮 ,控制层 z-index  变大,覆盖样式层
+			var set = document.getElementById('botton')
+			var control = document.getElementById('second')
+			set.onclick = function(){
+				control.style.zIndex = '10';
+			}
+			//			点击颜色控制按钮组的按钮,样式层按照按钮的规定变换属性
+			var colorBot1 = document.getElementById('color1')
+			var colorBot2 = document.getElementById('color2')
+			var colorBot3 = document.getElementById('color3')
+			var stylebox = document.getElementById('box')
+			colorBot1.onclick = function(){
+				stylebox.style.backgroundColor = 'red';
+			}
+			colorBot2.onclick = function(){
+				stylebox.style.backgroundColor = 'yellow';
+			}
+			colorBot3.onclick = function(){
+				stylebox.style.backgroundColor = 'blue';
+			}
+			//			点击宽度控制按钮组的按钮,样式层按照按钮的规定变换属性
+			var widthBot1 = document.getElementById('width1')
+			var widthBot2 = document.getElementById('width2')
+			var widthBot3 = document.getElementById('width3')
+			widthBot1.onclick = function(){
+			stylebox.style.width = '200px';
+			}
+			widthBot2.onclick = function(){
+				stylebox.style.width = '300px';
+			}
+			widthBot3.onclick = function(){
+				stylebox.style.width = '400px';
+			}
+			//			点击高度控制按钮组的按钮,样式层按照按钮的规定变换属性
+            var heightBot1 = document.getElementById('height1')
+            var heightBot2 = document.getElementById('height2')
+            var heightBot3 = document.getElementById('height3')
+			heightBot1.onclick = function(){
+				stylebox.style.height = '200px';
+			}
+			heightBot2.onclick = function(){
+				stylebox.style.height = '300px';
+			}
+			heightBot3.onclick = function(){
+				stylebox.style.height = '400px';
+			}
+			//			点击底部控制按钮组的按钮->恢复,样式层样式变为初始样式
+			var recovery = document.getElementById('botton2')
+			recovery.onclick = function(){
+				stylebox.style.backgroundColor = '#ffffff';
+				stylebox.style.width = '100px';
+				stylebox.style.height = '100px';
+			}
+			//			点击底部控制按钮组的按钮->确定,控制层z-index 重新变小被覆盖
+			var confirm = document.getElementById('botton3')
+			confirm.onclick = function(){
+				control.style.zIndex = '1';
+			}
+		</script>
+</html>
