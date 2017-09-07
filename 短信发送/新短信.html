@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h1,h2,h3,h4,h5,h6,dl,dt,dd,p,ul,li{margin:0;padding:0;}
+
+			body{font-size:12px;font-family:"微软雅黑";}
+			
+			ol,ul,li{list-style:none;}
+			
+			a{text-decoration:none;
+			   display:block;  }
+			
+			img{border:0; }
+			#box{
+				width:505px;
+				height:800px;
+				background:#c1b1ce;
+				position:relative;
+				margin:50px auto;
+			}
+			#shouji{
+				width:359px;
+				height:681px;
+				border-radius: 25px;
+				background:url(img/images/shouji_03.png)no-repeat;
+				position:absolute;
+				left:78px;
+				top:66px;
+			}
+			#content{
+				width:320px;
+				height:561px;
+				position:absolute;
+				left:18px;
+				top:45px;
+			}
+			#list{
+				padding:22px 20px 0px 22px;
+				width:278px;
+				height:480px;
+				position:absolute;
+				top:0px;
+				left:0px;
+				overflow: auto;
+			}
+			#send{
+				width:320px;
+				height:61px;
+				position: absolute;
+				top:500px;
+				left:0px;
+			}
+			#hong1{
+				width:32px;
+				position:absolute;
+				left:16px;
+				top:12px;
+			}
+			.red{
+				position: relative;
+				overflow: hidden;
+				margin-bottom:15px;
+			}
+
+			#bg1{
+				width:227px;
+				background:#e25679;
+				color:#FFFFFF;
+				filter: alpha(opacity40);
+				opacity: 0.7;
+				line-height:40px;
+				font-size:16px;
+				float: left;
+				word-break: break-all;
+			}
+			#jian1{
+				float:left;
+				position: relative;
+				top:16px;
+			}
+			#hongren{
+				float: right;
+			}
+			#bg2{
+				width:227px;
+				background:#000000;
+				filter: alpha(opacity40);
+				opacity: 0.7;
+				line-height:40px;
+				font-size:16px;
+				color:#FFFFFF;
+				float:left;
+				word-break: break-all;
+			}
+			#jian2{
+				float:left;
+				position: relative;
+				top:16px;
+			}
+			#lanren{
+				float: left;
+			}
+
+			#text{
+				width:190px;
+				height:40px;
+				line-height:40px;
+				font-size:16px;
+				position:absolute;
+				left:58px;
+				top:8px;
+				background:white;
+				border-radius:10px;
+			}
+			#btn{
+				width:48px;
+				height:40px;
+				font-size:16px;
+				line-height:40px;
+				color:red;
+				position:absolute;
+				left:260px;
+				top:10px;	
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="shouji">
+				<div id="content">
+					<ul id="list">
+						<!--<li class="red">	
+							<span id="bg1"></span><i><img src="img/r02.png" id="jian1"></i><img src="img/rico.png"/ id="hongren">							
+						</li>
+						<li class="red">
+							<img src="img/lico.png"/ id="lanren"><i><img src="img/l02.png" id="jian2"></i><span id="bg2"></span>	
+						</li>-->
+					</ul>
+					<div id="send">
+						<img src="img/rico.png" id="hong1">
+						<input type="text" id="text">
+						<button id="btn">发送</button>			
+					</div>
+				</div>
+			</div>	
+		</div>		
+		<script>
+			var list=document.querySelector('#list');
+			var xiatu=document.querySelector('#hong1');
+			var text=document.querySelector('#text');
+			var btn=document.querySelector('#btn');
+			var imgState=true;
+			
+			//1切换下面的表情图片
+			xiatu.onclick=function(){
+				if(imgState){
+					xiatu.src="img/lico.png";
+					imgState=false;
+				}else{
+					xiatu.src="img/rico.png";
+					imgState=true;
+				}
+			}
+			
+			//2.文本框内容为空，弹出'请输入内容'；
+			btn.onclick=function(){
+				if(text.value==""){
+					alert('请输入内容')
+				}else{
+						if(imgState){
+							list.innerHTML+='<li class="red"><span id="bg1">'+text.value+'</span><i><img src="img/r02.png" id="jian1"></i><img src="img/rico.png"/ id="hongren"></li>'
+						}else{
+							list.innerHTML+='<li class="red"><img src="img/lico.png"/ id="lanren"><i><img src="img/l02.png" id="jian2"></i><span id="bg2">'+text.value+'</span></li>'
+						}
+					}
+				//同时清空text输入框中的内容；
+				text.value='';	
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
