@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		body,h1,h2,h3,h4,h5,h6,dl,dt,dd,p,ul,li{margin:0;padding:0;}
+
+		body{font-size:12px;font-family:"微软雅黑";}
+		
+		ol,ul,li{list-style:none;}
+		
+		a{text-decoration:none;
+		   display:block;  }
+		
+		img{border:0; }	
+			
+			#box{
+				width:1000px;
+				height:800px;
+				margin:50px auto;
+				background:#967fd4;
+				position:relative;
+			}
+			#content{
+				width:680px;
+				height:507px;
+				border-radius:20px;
+				background: #ffffff;
+				position:absolute;
+				left:160px;
+				top:154px;
+			}
+			#tiao{
+				width:6px;
+				height:60px;
+				background:url(images/lie_03.png)no-repeat;
+				position:absolute;
+				left:22px;
+				top:223px;
+			}
+			#con{
+				width:560px;
+				height:410px;
+				background: #000000;
+				position:absolute;
+				left:46px;
+				top:46px;
+			}
+			#miaov{
+				width:47px;
+				height:57px;
+				background: url(images/miao_06.png)no-repeat;
+				position:absolute;
+				left:618px;
+				top:227px;	
+			}
+			#top1{
+				width:560px;
+				height:95px;
+				position: absolute;
+				top: 0px;
+			}
+			#xun{
+				width:128px;
+				height:32px;
+				line-height:32px;
+				text-align: center;
+				border:1px solid #FFFFFF;
+				background:#000000;
+				color:#FFFFFF;
+				position:absolute;
+				left:150px;
+				top:14px;	
+			}
+			
+			#sun{
+				width:128px;
+				height:32px;
+				line-height:32px;
+				text-align: center;
+				border:1px solid #FFFFFF;
+				background:#000000;
+				color:#FFFFFF;
+				position:absolute;
+				left:280px;
+				top:14px;
+			}
+			
+			#moshi{
+				width:260px;
+				height:40px;
+				line-height:40px;
+				text-align: center;
+				background:#000000;
+				color:#FFFFFF;
+				position:absolute;
+				left:150px;
+				top:50px;
+			}
+			#bot{
+				width:550px;
+				height:312px;
+				top:95px;
+				position:absolute;
+				left:5px;
+			}
+			#ye{
+				background:#000000;
+				width:550px;
+				height:30px;
+				font-weight: bold;
+				line-height:30px;
+				text-align: center;
+				color: #FFFFFF;
+				opacity: 0.3;
+				position: absolute;
+				top: 0px;
+			}
+			#miaosu{
+				background: #000000;
+				width:550px;
+				height:30px;
+				font-weight: bold;
+				line-height:30px;
+				text-align: center;
+				color: #FFFFFF;
+				opacity: 0.7;
+				position: absolute;
+				top:280px;
+			}
+			#prev,#next{
+				background: #000000;
+				width:35px;
+				height:50px;
+				line-height:30px;
+				font-weight: bold;
+				text-align: center;
+				color: #51514C;
+				opacity: 0.6;
+			}
+			#prev{
+				position: absolute;
+				top:130px;
+				left:0px;
+			}
+			#next{
+				position: absolute;
+				top:130px;
+				left:511px;
+			}
+			/*!!有id和class名的话id优先级高于class，更改class名需要加上他的父级*/
+			/*!!有id和class名的话id优先级高于class，更改class名需要加上他的父级*/
+			/*!!有id和class名的话id优先级高于class，更改class名需要加上他的父级*/
+			#top1 .active{
+				background:#FFFFFF;
+				color: #000000;
+			}
+			#tanBox {
+        position: absolute;
+        width: 298px;
+        height: 148px;
+        left: 50%;
+        top: 50%;
+        margin-left: -149px;
+        margin-top: -74px;
+        border: 1px solid #93908d;
+        display: none;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+    }
+    
+    #tanBox span {
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        cursor: pointer;
+    }
+    
+    #tanBox em {
+        background: #000;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #tanBox p {
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 31px;
+        line-height: 27px;
+    }
+    
+    #tanBox strong {
+        position: absolute;
+        width: 100%;
+        height: 44px;
+        font-size: 14px;
+        color: #93908d;
+        top: 58px;
+        text-align: center;
+        line-height: 44px;
+    }
+    
+    #tanBox a {
+        width: 80px;
+        height: 25px;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        line-height: 25px;
+        text-align: center;
+        bottom: 19px;
+        left: 106px;
+        position: absolute;
+        font-size: 14px;
+        color: #fff;
+    }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="content">
+				<div id="tiao"></div>
+				<div id="con">
+					<div id="top1">
+						<div id="xun" class="active">循环切换</div>
+						<div id="sun">顺序切换</div>
+						<span id="moshi">图片可从最后一张跳转到第一张循环切换</span>
+					</div>
+					<div id="bot">
+						<img src="images/t1_03.png" />
+						<div id="ye">1/4</div>
+						<div id="miaosu">战车</div>
+						<input type="button" id="prev" value="<" />
+						<input type="button" id="next" value=">" />
+					</div>
+					
+				</div>
+				<div id="miaov"></div>	
+			</div>
+			 <div id="tanBox">
+	            <em></em>
+	            <span></span>
+	            <p>JavaScript提醒</p>
+	            <strong>已经到最后一张啦～</strong>
+	            <a href="javascript:void(0);">确定</a>
+       		 </div>
+		</div>	
+		<script>
+			//初始默认样式为循环播放；点击顺序后为顺序播放；
+			var xun=document.querySelector("#xun");
+			var sun=document.querySelector("#sun");
+			var moshi=document.querySelector("#moshi");
+			var ye=document.querySelector("#ye");
+			var miaosu=document.querySelector("#miaosu");
+			var prev=document.querySelector("#prev");
+			var next=document.querySelector("#next");
+			var img=document.querySelector("img");
+			var queding=document.querySelector("a");
+			var arr=["images/t1_03.png","images/t2_03.png","images/t3_03.png","images/t4_03.png"];
+			var arrText=["战车","机器人","大飞机","未来战士"];
+			var state=true;//切换循环播放和顺序播放的状态；
+			var n=0;
+			
+			//点击循环播放，
+			//1span值显示"图片可从最后一张跳转到第一张循环切换"
+			//2.点击next，图片可从最后一张跳转到第一张循环切换
+			//	点击prev，图片可从第一张跳转到最后一张循环切换
+			
+			
+			//点击顺序播放，
+			//1span值显示"图片只能到最后一张/图片只能到第一张"
+			//2.点击next，图片只能到最后一张/图片只能到第一张
+			//	点击prev，图片只能到最后一张/图片只能到第一张
+			
+	
+			xun.onclick=function(){
+				state=true;
+				moshi.innerHTML='图片可从最后一张跳转到第一张循环切换';
+				xun.className="active"
+				sun.className='';
+			}
+			sun.onclick=function(){
+				state=false;
+				moshi.innerHTML='图片只能到最后一张/图片只能到第一张';
+				sun.className="active"
+				xun.className='';
+			}
+			//点击确定，弹框消失；			
+			queding.onclick=function(){
+				tanBox.style.display = 'none';
+			}
+
+			next.onclick=function(){
+				if(state){
+					n++;
+					if(n>arr.length-1){
+						n=0;
+					}
+			
+				}else{
+					n++;
+					if(n>arr.length-1){
+						n=arr.length-1;
+						tanBox.style.display = 'block';
+					}	
+				}
+				tab();
+			}	
+			prev.onclick=function(){
+				if(state){
+					n--;
+					if(n<0){
+						n=arr.length-1;
+					}
+				}else{
+					n--;
+					if(n<0){
+						n=0;
+						tanBox.style.display = 'block';
+					}		
+				}
+				tab();
+			}
+			
+			function tab(){
+				ye.innerHTML=(n+1)+"/"+arr.length;
+				miaosu.innerHTML=arrText[n];
+				img.src=arr[n];	
+			}
+			
+			//最后一步
+			//控制弹窗的开关；出现弹窗的情况下不能点击左右箭头
+			//这个需求需要设置弹窗的开关，并把左右点击事件放入弹窗开关的大事件中；
+			
+		</script>
+		
+		
+		
+	</body>
+</html>
