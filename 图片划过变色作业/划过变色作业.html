@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 1000px;
+				height: 560px;
+				position: relative;
+			}
+			
+			#box div {
+				width: 100px;
+				height: 70px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: url(images/bg.png)no-repeat;
+				opacity: 0.3;
+				transition: 0.5s;
+				transform: scale(1);
+			}
+			
+			#box div:hover {
+				transform: scale(1.3);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+
+		</div>
+		<script>
+//			var box = document.querySelector("#box");
+//			var n=-1;
+//			for(var i = 0; i < 80; i++) {
+//				if(i % 10 == 0) {
+//					n++
+//				}
+//								
+//				//box.innerHTML +='<div style="left:'+(i%10)*100+'px;top:'+n*70+'px;background-position:-'+(i%10)*100+'px -'+n*70+'px";></div>'	
+//				
+//				//!!后面就是一个空格的问题，图片一直没有出来，也是醉了；带负号和加号一定要小心对待；px-与px -；加逗号也不行啊；
+//				
+//				box.innerHTML +='<div style="left:'+(i%10)*100+'px;top:'+n*70+'px;background-position:-'+(i%10)*100+'px -'+n*70+'px";></div>'
+//			}
+//			var kuai=box.getElementsByTagName('div')
+//			for(var i=0;i<80;i++){
+//		
+//			kuai[i].onmouseover=function(){
+//				this.style.opacity="1";
+//			}
+//		}	
+		
+		
+		
+		
+			var box=document.querySelector("#box");
+			var n=-1;
+			for (var i = 0; i < 80; i++) {
+				if(i%10==0){
+					n++;
+				}
+				box.innerHTML+='<div style="left:'+(i%10)*100+'px;top:'+n*70+'px;background-position:-'+(i%10)*100+'px  -'+n*70+'px;"></div>'
+			}
+			var kuai=document.getElementsByTagName('div')
+			for (var i = 0; i < 80; i++) {
+				kuai[i].onmouseover=function(){
+					this.style.opacity="1";
+				}
+			}
+		
+		</script>
+	</body>
+
+</html>
