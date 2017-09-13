@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#topp{
+				width:500px;
+				height:100px;
+				border:1px solid #000000;
+				justify-content: space-around;
+				align-items: center;	
+				padding-top:20px;
+			}
+			button{
+				width:100px;
+				height:80px;
+				margin-left:30px;
+				margin-bottom:20px;
+				border:1px solid #000000;
+				cursor: pointer;
+			}
+			button:hover{
+				background:deeppink;
+			}
+			#bott{
+				width:500px;
+				height:300px;
+				border:1px solid #000000;
+			}
+			#bott div{
+				width:500px;
+				height:300px;
+				line-height:300px;
+				font-size:30px;
+				border:1px solid #000000;
+				text-align: center;
+				display: none;
+			}
+			
+		
+			.active{	
+				background:yellow;
+			}
+			.green{
+				background: greenyellow;
+			}
+			.blue{
+				background:blue;
+			}
+			.purple{
+				background:purple;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="topp">
+			<button id="tu" class="active">图片</button>
+			<button id="re">热点</button>
+			<button id="zuan">专栏</button>	
+		</div>
+		<div id="bott">
+			<div id="tu1" class="green" style="display: block;">图片</div>
+			<div id="re1">热点</div>
+			<div id="zuan1">专栏</div>
+		</div>
+		<script>
+			var btns=document.querySelectorAll('button');
+			var items=document.querySelectorAll("#bott div")
+			
+			var len=btns.length;
+			for (var i = 0; i < len; i++) {
+				btns[i].index=i;
+				btns[i].onclick=function(){
+					//先清空所有的样式
+					for (var i = 0; i < len; i++) {
+						btns[i].className='';
+						items[i].className='green';
+						items[i].style.display='none';
+					}
+					//给当前元素添加样式；
+					this.className='active';
+					items[this.index].className='green';
+					items[this.index].style.display='block';
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

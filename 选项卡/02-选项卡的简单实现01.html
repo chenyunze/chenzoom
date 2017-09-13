@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    .container {
+      width: 500px;
+      height: 500px;
+      border: 2px solid #000;
+      display: flex;
+      flex-direction: column;
+    }
+    .btns {
+      height: 80px;
+      border-bottom: 2px solid #000;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .btns .btn-item {
+      width: 100px;
+      height: 60px;
+      border: 1px solid #000;
+      text-align: center;
+      line-height: 60px;
+      background-color: rgba(233, 111, 76, 0.67);
+      cursor: pointer;
+    }
+    .btns .btn-item:hover {
+      background-color: rgba(233, 111, 76, 1);
+      color: #fff;
+    }
+    .btns .btn-item.active {
+      background-color: rgb(44, 193, 236);
+      color: #fff;
+    }
+    .btns .btn-item.active:hover {
+      background-color: rgb(44, 193, 236);
+      color: #fff;
+    }
+    .body {
+      flex: 1;
+      position: relative;
+    }
+    .body .body-item {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(75, 224, 249, 1);
+      /*position: absolute;
+      left: 0;
+      top: 0;*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 100px;
+      display: none;
+    }
+    .body .body-item.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="btns">
+      <div class="btn-item active">图片</div>
+      <div class="btn-item">专栏</div>
+      <div class="btn-item">热点</div>
+    </div>
+    <div class="body">
+      <div class="body-item active">图片1111</div>
+      <div class="body-item">专栏2222</div>
+      <div class="body-item">热点3333</div>
+    </div>
+  </div>
+  <script>
+    /**
+     * 1 获取所有的按钮和对应的内容
+     * 2 给所有的按钮添加点击事件
+     * 3 模拟单选
+     */
+    
+    
+    var btns = document.querySelectorAll('.btns div');
+    var items = document.querySelectorAll('.body div');
+  
+    var len = btns.length;
+    
+    for(var i=0; i<len; i++){
+      btns[i].onclick = function (){
+        // 清除所有
+        for(var i=0; i<len; i++){
+          btns[i].classList.remove('active');
+          items[i].classList.remove('active');
+        }
+        this.classList.add('active');
+        items[this.index].classList.add('active');
+      };
+    }
+  
+  
+  
+  
+  
+  
+  
+  </script>
+</body>
+</html>

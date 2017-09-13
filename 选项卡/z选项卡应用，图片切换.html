@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			dl,
+			dt,
+			dd,
+			p,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 12px;
+				font-family: "微软雅黑";
+			}
+			
+			ol,
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				display: block;
+			}
+			
+			img {
+				border: 0;
+			}
+			
+			#box {
+				width: 1000px;
+				height: 800px;
+				background: url(img/imgs/bg.png)no-repeat;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			#con {
+				width: 530px;
+				height: 350px;
+				position: absolute;
+				top: 173px;
+				left: 300px;
+				border: 2px solid #000000;
+			}
+			#tu {
+				width: 530px;
+				height: 350px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			#prev{
+				position:absolute;
+				left:8px;
+				top:150px;
+				width:30px;
+				height:48px;
+			}
+			#next{
+				position:absolute;
+				left:495px;
+				top:150px;
+				width:30px;
+				height:48px;
+			}
+			#dian {
+				width: 180px;
+				height: 18px;
+				position: absolute;
+				left:488px;
+				top:572px;
+			}
+			#dian span{
+				width:16px;
+				height:16px;
+				border-radius:100px;
+				background:#a39f9f;
+				float:left;
+				margin-right:18px;
+			}
+			#dian .blue{
+				background:#62d3ee;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="con">
+				<div id="tu">
+					<div id="prev"><img src="img/prev.png"></div>
+					<div id="next"><img src="img/next.png"></div>
+					<img src="作业/幻灯片/ads/1.png" id="imgs">
+					<!--<img src="作业/幻灯片/ads/1.png">
+					<img src="作业/幻灯片/ads/1.png">
+					<img src="作业/幻灯片/ads/1.png">
+					<img src="作业/幻灯片/ads/1.png">-->
+				</div>
+			</div>
+			<div id="dian">
+				<span class="blue"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>		
+			</div>
+		</div>
+		<script>
+			var next=document.querySelector('#next');
+			var prev=document.querySelector("#prev");
+			var imgs=document.querySelector("#imgs")
+			console.log(imgs)
+			var n=0;
+			var arr=["作业/幻灯片/ads/1.png","作业/幻灯片/ads/2.png","作业/幻灯片/ads/3.png","作业/幻灯片/ads/4.png","作业/幻灯片/ads/5.png"]
+			next.onclick=function(){
+				n++;
+				if(n>arr.length-1){
+					n=0;
+				}
+				imgs.src=arr[n];
+				
+			//处理过界    next和span的交互
+				for (var i = 0; i <arr.length; i++) {
+					spans[i].className='';
+					imgs.src='';
+				}
+					imgs.src=arr[n];	
+    				spans[n].className = 'blue';	
+			}
+			prev.onclick=function(){
+				n--;
+				if(n<0){
+					n=arr.length-1;
+				}
+				imgs.src=arr[n];
+				
+			//处理过界    prev和span的交互	
+				for (var i = 0; i <arr.length; i++) {
+					spans[i].className='';
+					imgs.src='';
+				}
+					imgs.src=arr[n];	
+    				spans[n].className = 'blue';		
+			}
+			//下面的span要与图片进交互，点击第几个点出现第几张图片；
+			var spans=document.querySelectorAll("#dian span")
+			console.log(spans);
+			var len=spans.length;
+			for (var i = 0; i < len; i++) {
+				spans[i].index=i;
+				spans[i].onclick=function(){
+					for (var i = 0; i < len; i++) {
+						spans[i].className='';
+						imgs.src='';
+					}
+					this.className='blue';
+					imgs.src=arr[this.index];
+				}
+			}
+		
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

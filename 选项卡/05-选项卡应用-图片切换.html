@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .slide-container {
+      width: 720px;
+      height: 450px;
+      border: 4px solid #000;
+      margin: 30px auto;
+      position: relative;
+    }
+    .slides {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .slider-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .slider-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.4s linear;
+    }
+    .slider-item.active {
+      opacity: 1;
+    }
+    .navs {
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    .nav-item {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      transform: scale(0.5);
+      background-color: rgb(71, 173, 221);
+      border-radius: 50%;
+    }
+    .nav-item.active {
+      background-color: rgb(228, 50, 141);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="slides">
+      <a href="javascript:;" class="slider-item active"><img src="./img/1.jpg"></a>
+      <a href="javascript:;" class="slider-item"><img src="./img/2.jpg"></a>
+      <a href="javascript:;" class="slider-item"><img src="./img/3.jpg"></a>
+      <a href="javascript:;" class="slider-item"><img src="./img/4.jpg"></a>
+      <a href="javascript:;" class="slider-item"><img src="./img/5.jpg"></a>
+    </div>
+    <div class="navs">
+      <span class="nav-item active"></span>
+      <span class="nav-item"></span>
+      <span class="nav-item"></span>
+      <span class="nav-item"></span>
+      <span class="nav-item"></span>
+    </div>
+  </div>
+  <script>
+    // 获取一组幻灯片
+    var sliderItems = document.querySelectorAll('.slider-item');
+    // 获取一组导航栏按钮
+    var navItems = document.querySelectorAll('.nav-item');
+    
+    // console.log(sliderItems, navItems);
+    
+    var len = navItems.length;
+
+    for(var i=0; i<len; i++){
+      // 一组元素控制另外一组元素所以使用自定义属性（索引值）
+      navItems[i].index = i;
+      // 给每个按钮添加鼠标移入事件
+      navItems[i].onmouseover = function (){
+        // 先清除所有的按钮的选中的样式active
+        // 先让所有的图片透明度为0，也就是清除所有的图片的acitve类名
+        for(var i=0; i<len; i++){
+          navItems[i].classList.remove('active');
+          sliderItems[i].classList.remove('active');
+        }
+        // 清除所有的之后要给"当前"要显示的这个添加active
+        this.classList.add('active');  // this 就是当前鼠标移入地这个导航栏按钮
+        sliderItems[this.index].classList.add('active'); // 在事件里面不能用外面循环的 i，但是想用这个索引，可以使用自定义属性保存的那个i的值
+      };
+    }
+  
+  </script>
+</body>
+</html>
