@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li,
+			h2 {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="qq.css" />
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="list">
+				<h2><span></span>我的好友</h2>
+				<ul>
+					<li>小佳Love</li>
+					<li>从来就是这么正经</li>
+					<li>leo是个胖子</li>
+					<li>momo不是陌陌</li>
+				</ul>
+				<h2><span></span>企业好友</h2>
+				<ul>
+					<li>习近平</li>
+					<li>普京</li>
+					<li>奥巴马</li>
+				</ul>
+				<h2><span></span>黑名单</h2>
+				<ul>
+					<li>安倍</li>
+					<li>金三胖</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			//注释为自己写的，为啥不一样效果	，真无语了  找了半天，原来是括号的问题，大括号嵌套{}  这是修改好的。
+			var uls = document.querySelectorAll('.list ul');
+			var lis = document.querySelectorAll('.list li');
+			var h2s = document.querySelectorAll('.list h2');
+			var isClick = false;
+			var flag = 0; //记录点h2的下标
+			var flagIndex = 0; //记录点击li的下标；
+			for(var i = 0; i < h2s.length; i++) {
+				h2s[i].index = i;
+				h2s[i].disp = 'n'; //记录上次被点击h2的下标；
+				h2s[i].onclick = function() {
+					lis[flagIndex].style.display = 'none';
+					lis[flagIndex].isClick = false;
+					if(flag!= this.index) {
+						uls[flag].style.display = 'none';
+						h2s[flag].disp = 'n'
+						h2s[flag].className = '';
+					}
+					if(this.disp == 'n') {
+						uls[this.index].style.display = 'block';
+						this.className = 'active';
+						this.disp = 'sdad';
+					} else {
+						uls[this.index].style.display = 'none';
+						this.className = '';
+						this.disp = 'n'
+					
+				}
+				flag = this.index;
+			}
+		}
+				
+//		for (var i = 0; i < h2s.length; i++) {
+//			h2s[i].index=i;
+//			h2s[i].disp='n';//记录上一次点击h2的下标
+//			h2s[i].onclick=function(){
+//				lis[flagIndex].style.display='none';
+//				lis[flagIndex].isClick=false;
+//				if(flag!=this.index){//不相同说明点击的不是同一个h2;
+//					uls[flag].style.display='none';
+//					h2s[flag].disp='n';
+//					h2s[flag].className='';					
+//					
+//				}
+//				if(this.disp=='n'){
+//					uls[this.index].style.display='block';
+//					this.className='active';
+//					this.disp='sdad';
+//				}else{
+//					uls[this.index].style.display='none';
+//					this.className='';
+//					this.disp='n';
+//				}
+//				flag=this.index;
+//			}
+//		}	
+		
+			//找到li
+			for(var i = 0; i < lis.length; i++) {
+				lis[i].index = i;
+				lis[i].isClick = false;//记录点击的状态
+				lis[i].onmouseover = function() {
+					if(!this.isClick) {
+						this.style.background = 'pink';
+					}
+				}
+				lis[i].onmouseout = function() {
+					if(!this.isClick) {
+						this.style.background = '';
+					}
+				}	
+					lis[i].onclick = function() {
+						if(flagIndex != this.index) {
+							lis[flagIndex].style.background = '';
+							lis[flagIndex].isClick = false;
+						}
+						this.isClick = true;
+						this.style.background = 'red';
+						flagIndex = this.index;
+					}
+
+				}
+//			for (var i = 0; i < lis.length; i++) {
+//				lis[i].isClick=false;
+//				lis[i].index=i;
+//				lis[i].onmouseover=function(){
+//					if(!this.isClick){
+//						this.style.background="pink"
+//					}
+//				}
+//				lis[i].onmouseout=function(){
+//					if(!this.isClick){
+//						this.style.background='';
+//					}
+//				}
+//				lis[i].onclick=function(){
+//					if(flagIndex!=this.index){
+//						lis[flagIndex].style.background='';
+//						lis[flagIndex].isClick=false;						
+//					}
+//					this.isClick=true;
+//					this.style.background='red';
+//					flagIndex=this.index;
+//				}
+//	
+//			}	
+				
+				
+				
+		</script>
+	</body>
+
+</html>

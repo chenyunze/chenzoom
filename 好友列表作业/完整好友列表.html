@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li,
+			h2 {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="qq.css" />
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="list">
+				<h2><span></span>我的好友</h2>
+				<ul>
+					<li>小佳Love</li>
+					<li>从来就是这么正经</li>
+					<li>leo是个胖子</li>
+					<li>momo不是陌陌</li>
+				</ul>
+				<h2><span></span>企业好友</h2>
+				<ul>
+					<li>习近平</li>
+					<li>普京</li>
+					<li>奥巴马</li>
+				</ul>
+				<h2><span></span>黑名单</h2>
+				<ul>
+					<li>安倍</li>
+					<li>金三胖</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			//1.点击标题，让标题颜色变色，让箭头旋转
+			//2，点击标题，让对应的列表可以展开和收缩；
+			//3.点击当前标题，让上一个列表收起来（首先得需要先声明上一个）；
+	
+				
+			//获取元素
+			var list=document.querySelector('.list')
+			//所有标题
+			var h2s=document.querySelectorAll('.list h2');
+			//所有span
+			var spans=document.querySelectorAll('span')
+			//所有的ul
+			var uls=document.querySelectorAll('.list ul')
+			
+			//所有li
+			var lis=document.querySelectorAll('.list li');
+			
+			var flag=0;//记录当前点击h2的元素；
+			var  flagIndex=0;//记录当前点击li上一个操作的元素；
+	
+			var len=h2s.length;
+			for (var i = 0; i <len; i++) {
+				h2s[i].index=i;
+				h2s[i].prev='n';//用来纪录上一次点击h2的下标；
+				h2s[i].onclick=function(){
+					//不相同说明点击的而不是同一个h2
+					if(flag!=this.index){
+						uls[flag].style.display='';
+						h2s[flag].className='';
+						h2s[flag].prev='n';//记录这次为上次；
+						spans[flag].className='';
+					}
+					//点击是相同h2时的情况；
+					if(this.prev=='n'){						
+						uls[this.index].style.display='block';
+						this.className='active';
+						this.prev='abc';
+						spans[this.index].className='active';
+					}else{
+						uls[this.index].style.display='';
+						spans[this.index].className='';
+						this.className='';
+						this.prev='n';
+					}
+					flag=this.index;//记录本次；
+				}
+			}
+			
+			//找到所有的li，给li添加样式
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].isClick=false;//记录li未被点击；
+				lis[i].index=i;//lis的之定义属性；
+				lis[i].onmouseover=function(){
+					//如果未被点击，划过颜色为'pink';
+					if(!this.isClick){
+						this.style.background='pink';
+					}				
+				}
+					//如果未被点击，划出颜色为'';
+				lis[i].onmouseout=function(){
+					if(!this.isClick){
+						this.style.background='';
+					}		
+				}
+				
+				lis[i].onclick=function(){
+					//如果点击的li不为同一个li；
+					if(flagIndex!=this.index){
+					//清空上次li的颜色；同时记录未点击的状态为false；
+						lis[flagIndex].style.background='';
+						lis[flagIndex].isClick=false;	
+					}	
+					//本次操作点击后颜色为红；同时记录点击的状态为true；
+					this.isClick=true;
+					this.style.background='red';
+					flagIndex=this.index;//记录本次；
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

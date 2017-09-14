@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body,
+			ul,
+			li,
+			h2 {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="qq.css" />
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="list">
+				<h2><span></span>我的好友</h2>
+				<ul>	
+					<li>小佳Love</li>
+					<li>从来就是这么正经</li>
+					<li>leo是个胖子</li>
+					<li>momo不是陌陌</li>
+				</ul>
+				<h2><span></span>企业好友</h2>
+				<ul>
+					<li>习近平</li>
+					<li>普京</li>
+					<li>奥巴马</li>
+				</ul>
+				<h2><span></span>黑名单</h2>
+				<ul>
+					<li>安倍</li>
+					<li>金三胖</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			var h2s = document.querySelectorAll('.list h2');
+			var uls = document.querySelectorAll('.list ul');
+			var spans=document.querySelectorAll('.lsit span')
+			// 没有在行间中添加style样式，display默认是为空字符串""
+			var lis = document.querySelectorAll(".list li");
+			var isClick = false;  // 不能使用共有的标示来记录li是否被点击了，如果用公用的标示，无论点击哪一个li，这个标示都会被设置为true
+			var flag = 0; // 用来记录点击h2的下标
+			var flagIndex = 0;  // 记录那个被最新点击的li的下标	
+			
+		for (var i = 0; i < h2s.length; i++) {
+			h2s[i].index=i;
+			h2s[i].disp='n';//记录上一次点击h2的下标
+			h2s[i].onclick=function(){
+//				lis[flagIndex].style.display='none';
+//				lis[flagIndex].isClick=false;
+				if(flag!=this.index){//不相同说明点击的不是通一个h2;
+					uls[flag].style.display='none';
+					h2s[flag].className='';					
+					h2s[flag].disp='n';
+				}
+				if(this.disp=='n'){
+					uls[this.index].style.display='block';
+					this.className='active';
+					this.disp='sdad';
+				}else{
+					uls[this.index].style.display='none';
+					this.className='';
+					this.disp='n';
+				}
+				flag=this.index;
+			}
+		}	
+
+			//找到所有的li
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].isClick=false;
+				lis[i].index=i;
+				lis[i].onmouseover=function(){
+					if(!this.isClick){
+						this.style.background="pink"
+					}
+				}
+				lis[i].onmouseout=function(){
+					if(!this.isClick){
+						this.style.background='';
+					}
+				}
+				lis[i].onclick=function(){
+					if(flagIndex!=this.index){
+						lis[flagIndex].style.background='';
+						lis[flagIndex].isClick=false;						
+					}
+					this.isClick=true;
+					this.style.background='red';
+					flagIndex=this.index;
+				}
+	
+			}
+		</script>
+		
+	</body>
+	
+	
+</html>
