@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			dl,
+			dt,
+			dd,
+			p,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 12px;
+				font-family: "微软雅黑";
+			}
+			
+			ol,
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				display: block;
+			}
+			
+			img {
+				border: 0;
+			}
+			
+			#box {
+				width: 764px;
+				height: 444px;
+				background: url(bg.png)no-repeat;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			#con {
+				width: 480px;
+				height: 302px;
+				position: absolute;
+				left: 142px;
+				top: 57px;
+				background: #FFFFFF;
+			}
+			
+			#top {
+				width: 480px;
+				height: 216px;
+				padding-top: 20px;
+				margin-bottom: 17px;
+			}
+			
+			#top li {
+				width: 383px;
+				height: 36px;
+				font-size: 12px;
+				color: #000000;
+				line-height: 36px;
+				padding-left: 65px;
+				padding-right: 32px;
+				position: relative;
+			}
+			
+			#top .red {
+				background: #e9a3b0;
+			}
+			
+			.qu {
+				float: left;
+			}
+			
+			.ge {
+				float: right;
+			}
+			
+			.dan {
+				width: 12px;
+				height: 12px;
+				position: absolute;
+				left: 30px;
+				top: 13px;
+			}
+			
+			#xia {
+				width: 480px;
+				height: 49px;
+				background: #e25d77;
+				position: relative;
+			}
+			
+			#checkall {
+				width: 12px;
+				height: 12px;
+				border: 1px solid #FFFFFF;
+				position: absolute;
+				left: 30px;
+				top: 16px;
+			}
+			
+			#quan {
+				width: 28px;
+				height: 14px;
+				position: absolute;
+				left: 65px;
+				top: 15px;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="con">
+				<ul id="top">
+					<li>
+						<input type="checkbox" class="dan" />
+						<p class="qu">私奔</p>
+						<p class="ge">梁博</p>
+					</li>
+					<li class="red">
+						<input type="checkbox" class="dan" />
+						<p class="qu">北京 北京</p>
+						<p class="ge">梁博 黄勇</p>
+					</li>
+					<li>
+						<input type="checkbox" class="dan" />
+						<p class="qu">我爱你中国</p>
+						<p class="ge">梁博</p>
+					</li>
+					<li class="red">
+						<input type="checkbox" class="dan" />
+						<p class="qu">花火</p>
+						<p class="ge">梁博</p>
+					</li>
+					<li>
+						<input type="checkbox" class="dan" />
+						<p class="qu">回来</p>
+						<p class="ge">梁博</p>
+					</li>
+					<li class="red">
+						<input type="checkbox" class="dan" />
+						<p class="qu">爱要有你才完美</p>
+						<p class="ge">梁博 那英</p>
+					</li>
+				</ul>
+				<div id="xia">
+					<input type="checkbox" id="checkall" />
+					<p id="quan">全选</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			//需求：划过每一个li；颜色变为黄色；
+			var lis = document.querySelectorAll("#top li")
+			var len = lis.length;
+			for(var i = 0; i < len; i++) {
+				lis[i].index = i;
+				lis[i].onmouseover = function() {
+					this.style.background = "yellow";
+				}
+				lis[i].onmouseout = function() {
+					var inputcheckbox = this.querySelector('input'); //找到当前li中的单选按钮
+					console.log(inputcheckbox)
+					if(!inputcheckbox.checked) { //如果是在非点击的状态下；
+						if(this.index % 2 == 0) {
+							this.style.background = "";
+						} else {
+							this.style.background = "#e9a3b0";
+						}
+					}
+				}
+			}
+				//2全选与单选的交互；；
+				var inputbox = document.querySelectorAll(".dan"); //获取单选按钮；
+				var chackALLBox = document.querySelector("#checkall"); //获取全选按钮；
+				var len2 = inputbox.length;
+
+				//点击全选
+				chackALLBox.onclick = function() {
+					for(var i = 0; i < len2; i++) {
+						//使全部的单选按钮都选上；
+						inputbox[i].checked = this.checked;
+						if(this.checked) {
+							lis[i].style.background = 'yellow';
+						} else {
+							if(i % 2 == 0) {
+								lis[i].style.background = '#FFFFFF'
+							} else {
+								lis[i].style.background = '#e9a3b0'
+							}
+						}
+					}
+				}
+				//点击单选
+				for(var i = 0; i < len2; i++) {
+					inputbox[i].onclick = function() {
+						if(this.checked){
+							var checkALL=true;//假设是全选的状态
+							for (var i = 0; i < len2; i++) {
+								if(!inputbox[i].checked){
+									//只要有一个未被选中，checkedAll的状态为false；立刻停止执行
+									checkALL=false;
+									break;//return也可以；
+								}
+							}
+							chackALLBox.checked=checkALL;
+						}
+						else{
+						chackALLBox.checked = false;
+						}	
+					}
+				}
+			
+		</script>
+
+	</body>
+
+</html>
