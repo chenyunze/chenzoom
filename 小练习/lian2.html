@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				height:100px;
+				background:red;border:1px solid #000000;
+				float:left;margin-right:5px;margin-bottom:5px;
+				
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script>
+			window.onload=function(){
+			var box=document.getElementById('box');
+			var arr=['red','blue']
+			for(var i=0;i<10;i++){
+				if(1%2==0){
+					box.innerHTML+='<div style="background:'+arr[0]+';">'+i+'</div>';
+				}else{
+					box.innerHTML+='<div style="background:'+arr[1]+';">'+i+'</div>';
+				}
+			}
+			}
+			
+			
+		</script>
+	</body>
+</html>
