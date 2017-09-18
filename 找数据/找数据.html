@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			dl,
+			dt,
+			dd,
+			p,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 12px;
+				font-family: "微软雅黑";
+			}
+			
+			ol,
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				display: block;
+			}
+			
+			img {
+				border: 0;
+			}
+			#box{
+				width:706px;
+				height:463px;
+				background:url(bg.png)no-repeat;
+				background-size:100%;
+				margin:50px auto;
+				position:relative;
+			}
+			#list{
+				width:355px;
+				height:110px;
+				position:absolute;
+				left:160px;
+				top:230px;
+			}
+			#list li{
+				width:355px;
+				height:28px;
+				font-size:12px;
+				line-height:28px;
+			}
+			#item1{
+				color:yellow;
+			}
+			#item2{
+				color:deepskyblue;
+			}
+			#item3{
+				color:hotpink;
+			}
+			#item4{
+				color:orange;
+			}
+			#find{
+				width:60px;
+				font-size:12px;
+				height:22px;
+				line-height:22px;
+				text-align: center;
+				position:absolute;
+				left:495px;
+				top:230px;
+			}
+			
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<input type="button" id="find" value="开始查找">
+			<ul id="list">
+				<li id="item1"><span class="item" ></span>所有的数字是：</li>
+				<li id="item2"><span class="item"></span>可以转成数字的:</li>
+				<li id="item3"><span class="item"></span>转成数字的最大值：</li>
+				<li id="item4"><span class="item"></span>所有运算结果是NAN的位置：</li>
+			</ul>
+		</div>
+		<script>
+//			a='a';
+//			a+=b//a='a''+b;
+//
+//			a='a';
+//			a=b//b
+			var btn=document.querySelector('#find');
+			var lis=document.querySelectorAll('li');
+			var arr=['100px', 'abc' - 6, [], -98765, 34, -2, 0, '300', , function() {alert(1);}, null, document, [], true, '200px' - 30, '23.45Ԫ', 5, Number('abc'), function() {alert(3);}, 'xyz' - 90];
+			
+				btn.onclick=function(){
+					btn.disabled=true;
+				for(var i=0;i<arr.length;i++){	
+					if (typeof arr[i]=='number'&&!isNaN(arr[i])){
+						lis[0].innerHTML+=arr[i]+' , ';	
+					}	
+				}	
+				for(var i=0;i<arr.length;i++){	
+					if (!isNaN(parseFloat(arr[i]))){
+						lis[1].innerHTML+=arr[i]+' , ';	
+					}	
+				}
+				var n=-Infinity;
+				var str=lis[2].innerHTML;
+				for(var i=0;i<arr.length;i++){	
+					if(!isNaN(parseFloat(arr[i]))){
+						if(parseFloat(arr[i])>n){
+							n=parseFloat(arr[i]);
+							lis[2].innerHTML=str+n+' , ';	
+						}
+					}
+				}	
+
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]!=arr[i]){
+						//让他自己不等于他自己，这是NAN的特性；
+						lis[3].innerHTML+=i+' , ';		
+					}	
+				}	
+			}
+
+			
+		</script>
+	</body>
+
+</html>
