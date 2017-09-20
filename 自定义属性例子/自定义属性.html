@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.btn{
+				width:200px;
+				height:200px;
+				line-height:200px;
+				text-align: center;
+				margin:50px;
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="btn">0</button>
+		<button class="btn">0</button>
+		<button class="btn">0</button>
+		
+		<script>
+			var arr=['A','B','C','D']
+			var btns=document.querySelectorAll('button');
+			for (var i = 0; i < btns.length; i++) {
+				btns[i].num=0;
+				btns[i].onclick=function(){
+					this.innerHTML=arr[this.num]
+						this.num++;
+						if(this.num===arr.length){
+							this.num=0;
+						}
+
+				}
+				
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
