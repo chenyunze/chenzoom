@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+				border: 0;
+			}
+			
+			#box {
+				width: 600px;
+				height: 600px;
+			}
+			
+			button {
+				width: 100px;
+				height: 50px;
+				line-height: 30px;
+				color: #000000;
+				text-align: center;
+				margin-left: 30px;
+			}
+			
+			.btn.active {
+				background: paleturquoise;
+			}
+			
+			.item {
+				width: 400px;
+				height: 400px;
+				line-height: 400px;
+				font-size: 50px;
+				text-align: center;
+				border: 1px solid #000000;
+				margin: 20px;
+				display: none;
+			}
+			
+			.item.active {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<button class="btn active">按钮1</button>
+			<button class="btn ">按钮2</button>
+			<button class="btn ">按钮3</button>
+			<div class="item active">内容1</div>
+			<div class="item ">内容2</div>
+			<div class="item ">内容3</div>
+		</div>
+		<script>
+		var box=document.querySelector('#box');	
+		var btns=document.querySelectorAll('button');
+		var items=document.querySelectorAll('.item');
+		var len=btns.length;
+		var current=0;//记录当前操作元素；
+		var prev=0;//记录上一个操作元素；
+		var timer;//记录定时器编号
+		
+		//开始封装交互函数
+		function tab(){
+			btns[prev].classList.remove('active');
+			btns[current].classList.add('active');
+			items[prev].classList.remove('active');
+			items[current].classList.add('active');
+			prev=current;
+		}
+		
+		//封装点击函数
+		for (var i = 0; i < len; i++) {
+			(function(i){
+				btns[i].onclick=function(){
+					current=i;
+					tab();
+				}
+			})(i)
+		}
+		//封装自动播放函数
+		function autoPlay(){
+			timer=setInterval(function(){
+				current++;
+				current%=len;
+				tab();		
+			},1000)
+	
+		}
+		
+		//上来先播
+		autoPlay();
+		box.onmouseover=function(){
+			clearInterval(timer);
+		}
+		box.onmouseout=function(){
+			autoPlay();
+		}
+			
+		</script>
+
+	</body>
+
+</html>
